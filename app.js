@@ -1,12 +1,9 @@
 var express = require("express");
-var cors = require('node-cors');
 var app = express();
 var morgan = require("morgan");
 var bodyParser = require("body-parser");
 var nodemailer = require('nodemailer');
-
-// var whiteList = ['http://localhost:3000'];
-// app.use(cors());
+require('dotenv').config();
 
 // middleware
 app.set("view engine", "pug");
@@ -17,7 +14,7 @@ app.use(bodyParser.json())
 
 // CORS headers
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", process.env.AUTH_DOMAIN);
+  res.header("Access-Control-Allow-Origin", '*');
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"

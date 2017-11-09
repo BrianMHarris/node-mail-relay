@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ExplodedZombie/profile-mail#readme",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "locus": "^2.0.1",
     "morgan": "^1.9.0",
