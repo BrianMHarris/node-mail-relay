@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 
 // CORS headers
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Origin", process.env.AUTH_DOMAIN);
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
@@ -33,8 +33,8 @@ app.post('/contact', function(req, res, next) {
   var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: 'brianharris.dev@gmail.com', // hide this in environ var
-      pass: 'Portfol38Goo' // hide this in environ var
+      user: process.env.AUTH_USER, // hide this in environ var
+      pass: process.env.AUTH_PW // hide this in environ var
     }
   })
 

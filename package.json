@@ -21,7 +21,6 @@
     "express": "^4.16.2",
     "locus": "^2.0.1",
     "morgan": "^1.9.0",
-    "node-cors": "^1.0.0",
     "nodemailer": "^4.3.1",
     "pug": "^2.0.0-rc.4"
   }
