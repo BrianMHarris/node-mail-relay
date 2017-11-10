@@ -1,6 +1,5 @@
 var express = require("express");
 var app = express();
-var morgan = require("morgan");
 var bodyParser = require("body-parser");
 var nodemailer = require('nodemailer');
 var CryptoJS = require("crypto-js");
@@ -41,20 +40,23 @@ app.post('/contact', function(req, res, next) {
   var transporter = nodemailer.createTransport({
     service: process.env.EMAIL_SERVICE,
     auth: {
-      user: process.env.AUTH_USER, // hide this in environ var
-      pass: process.env.AUTH_PW // hide this in environ var
+      user: process.env.AUTH_USER,
+      pass: process.env.AUTH_PW
     }
   })
 
   var emailSubject = `Portfolio Contact from: ${payload.fullName}`;
+
+  // TODO: switch this to an HTML-based email with fancy styling
+  //  and a reply button.
   var emailBody = `From: ${payload.fullName}\n
                   Email: ${payload.email}\n
                   Subject: ${payload.subject}\n
                   Body: ${payload.body}`;
 
   var mailOptions = {
-    from: 'brianharris.dev@gmail.com', // hide this in environ var
-    to: 'brianharris.dev@gmail.com', // hide this in environ var
+    from: process.env.AUTH_USER,
+    to: process.env.AUTH_USER,
     subject: emailSubject,
     text: emailBody
   }
