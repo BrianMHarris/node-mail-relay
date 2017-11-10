@@ -13,7 +13,9 @@ Then in the terminal run `npm install` for dependencies.
 ## Usage
 Incoming data must be formatted correctly.
 
-### Code Examples
+### Code Examples (Client-Side)
+The data we want to include in the email:
+
 ```
 let payload = {
   fullName: <user name>,
