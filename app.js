@@ -3,12 +3,12 @@ var app = express();
 var morgan = require("morgan");
 var bodyParser = require("body-parser");
 var nodemailer = require('nodemailer');
+var CryptoJS = require("crypto-js");
 require('dotenv').config();
 
 // middleware
 app.set("view engine", "pug");
 app.use(bodyParser.urlencoded({extended:true}));
-// parse application/json
 app.use(bodyParser.json())
 
 // CORS headers
@@ -30,8 +30,13 @@ app.get('/contact', function(req, res, next) {
 });
 
 app.post('/contact', function(req, res, next) {
+
   if (Object.keys(req.body).length === 0)
     res.send(JSON.stringify("Request Body was Empty"));
+
+  var decrypted = CryptoJS.AES.decrypt(
+    req.body.encrypted, process.env.SECRET_HANDSHAKE);
+  var payload = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
 
   var transporter = nodemailer.createTransport({
     service: process.env.EMAIL_SERVICE,
@@ -41,11 +46,11 @@ app.post('/contact', function(req, res, next) {
     }
   })
 
-  var emailSubject = `Portfolio Contact from: ${req.body.fullName}`;
-  var emailBody = `From: ${req.body.fullName}\n
-                  Email: ${req.body.email}\n
-                  Subject: ${req.body.subject}\n
-                  Body: ${req.body.body}`;
+  var emailSubject = `Portfolio Contact from: ${payload.fullName}`;
+  var emailBody = `From: ${payload.fullName}\n
+                  Email: ${payload.email}\n
+                  Subject: ${payload.subject}\n
+                  Body: ${payload.body}`;
 
   var mailOptions = {
     from: 'brianharris.dev@gmail.com', // hide this in environ var
