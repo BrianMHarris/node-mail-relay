@@ -13,7 +13,9 @@ Then in the terminal run `npm install` for dependencies.
 ## Usage
 Incoming data must be formatted correctly.
 
-### Code Examples (Client-Side)
+### Code Examples (Client)
+The following code samples show what the client-side code might look like.
+
 The data we want to include in the email:
 
 ```
