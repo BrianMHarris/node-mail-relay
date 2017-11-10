@@ -65,8 +65,9 @@ app.post('/contact', function(req, res, next) {
   });
 })
 
-app.listen(process.env.PORT, function() {
-  console.log("The server has started on port 5000");
+var port = process.env.PORT || 5000;
+app.listen(port, function() {
+  console.log("The server has started on port " + port);
 })
 
 app.get('/contact')
