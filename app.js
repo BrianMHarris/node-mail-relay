@@ -23,6 +23,10 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.get('/contact', function(req, res, next) {
+  res.render('error')
+});
+
 app.post('/contact', function(req, res, next) {
   if (Object.keys(req.body).length === 0)
     res.send(JSON.stringify("Request Body was Empty"));
