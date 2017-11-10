@@ -22,11 +22,11 @@ app.use(function(req, res, next) {
 });
 
 app.get('/', function(req, res, next) {
-  res.render('error')
+  res.render('error');
 });
 
 app.get('/contact', function(req, res, next) {
-  res.render('error')
+  res.render('error');
 });
 
 app.post('/contact', function(req, res, next) {
@@ -34,7 +34,7 @@ app.post('/contact', function(req, res, next) {
     res.send(JSON.stringify("Request Body was Empty"));
 
   var transporter = nodemailer.createTransport({
-    service: 'Gmail',
+    service: process.env.EMAIL_SERVICE,
     auth: {
       user: process.env.AUTH_USER, // hide this in environ var
       pass: process.env.AUTH_PW // hide this in environ var
