@@ -14,7 +14,7 @@ Then in the terminal run `npm install` for dependencies.
 Incoming data must be formatted correctly.
 
 ### Code Examples (Client)
-The following code samples show what the client-side code might look like.
+The following code samples show what the client-side code might look like (client not included).
 
 The data we want to include in the email:
 
@@ -53,11 +53,11 @@ fetch(process.env.SERVER_ADDRESS, {
 ### Environment Variables
 All environment variables should be placed in a .env file at the root of the project.
 
-CLIENT
+CLIENT (not included!)
 
 ```
-SERVER_ADDRESS: 
-SECRET_HANDSHAKE: 
+SERVER_ADDRESS:
+SECRET_HANDSHAKE:
 ```
 PS - you can name them whatever you want as long as they match the code.
 

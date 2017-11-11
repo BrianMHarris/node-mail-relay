@@ -61,13 +61,14 @@ app.post('/contact', function(req, res, next) {
     text: emailBody
   }
 
+  // TODO: better messaging [use .status(<status>).send(msg)]
   transporter.sendMail(mailOptions, function(err, info) {
     if (err) {
       console.log(err);
-      res.json({msg: 'FAIL'});
+      res.json({fail: err});
     } else {
       console.log('Message sent: ' + info.response);
-      res.json({msg: info.response});
+      res.json({success: info.response});
     }
   });
 })
