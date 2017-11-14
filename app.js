@@ -21,14 +21,19 @@ app.use(function(req, res, next) {
 });
 
 app.get('/', function(req, res, next) {
-  res.render('error');
+  res.redirect('/error');
 });
 
 app.get('/contact', function(req, res, next) {
+  res.redirect('/error');
+});
+
+app.get('/error', function(req, res, next) {
   res.render('error');
 });
 
 app.post('/contact', function(req, res, next) {
+  // eval(require("locus"))
 
   if (Object.keys(req.body).length === 0)
     res.send(JSON.stringify("Request Body was Empty"));
@@ -77,3 +82,6 @@ var port = process.env.PORT || 5000;
 app.listen(port, function() {
   console.log("The server has started on port " + port);
 });
+
+// export the application for testing
+module.exports = app;

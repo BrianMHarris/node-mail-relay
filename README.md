@@ -79,6 +79,8 @@ For more information on how to configure the nodemailer options, see [https://no
 * [bodyparser](https://github.com/expressjs/body-parser)
 * [dotenv](https://www.npmjs.com/package/dotenv)
 
+## Testing
+
 ## License
 
 node-mail-relay is licensed under the MIT license
