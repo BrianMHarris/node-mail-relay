@@ -4,7 +4,7 @@
   "description": "simple node.js / express mail server for my profile page",
   "main": "app.js",
   "scripts": {
-    "start": "npm start",
+    "start": "node app.js",
     "test": "mocha"
   },
   "repository": {
